@@ -26,15 +26,13 @@ const auctionSchema = new mongoose.Schema({
     }],
     Auction_Status: {
         type: String,
-        required: true,
-        trim: true,
-        default: "INR"
+        default: 'pending',
+        enum: ["pending", "completed", "cancled"]
     },
     Start_Time: {
         type: Date,
         required: true,
         trim: true,
-        default: '₹'
     },
     End_Time: {
         type: Date,
