@@ -1,5 +1,9 @@
 const AuctionModel=require('../models/Auction_model')
 
+const isValidStatus = function (orderstatus) {
+    return ["pending", "completed", "cancled"].indexOf(orderstatus) !== -1
+}
+
 const createAuction=async (req,res)=>{
     try{
     const data=req.body
