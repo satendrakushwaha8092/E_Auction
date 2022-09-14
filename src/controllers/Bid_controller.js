@@ -1,7 +1,7 @@
-const BidModel=require('../models/Bid_model')
-const AuctionModel=require('../models/Auction_model')
-const ItemModel=require('../models/Item_model')
-const UserModel=require('../models/User_model')
+const BidModel = require('../models/Bid_model')
+const AuctionModel = require('../models/Auction_model')
+const ItemModel = require('../models/Item_model')
+const UserModel = require('../models/User_model')
 
 const isValid = function (value) {
     if (typeof value === 'undefined' || value === null) return false
@@ -18,10 +18,10 @@ const isValidObjectId = function (objectId) {
     return mongoose.Types.ObjectId.isValid(objectId)
 }
 
-const createBid=async (req,res)=>{
-    try{
-    const data=req.body
-    
+const createBid = async (req, res) => {
+    try {
+        const data = req.body
+
         if (Object.keys(data) == 0) return res.status(400).send({
             status: false,
             msg: "No input provided"
@@ -42,7 +42,7 @@ const createBid=async (req,res)=>{
             })
         }
 
-        if(!await AuctionModel.findOne({_id:data.auctionId})){
+        if (!await AuctionModel.findOne({ _id: data.auctionId })) {
             return res.status(400).send({
                 status: false,
                 msg: "AuctionId is not present"
@@ -63,13 +63,13 @@ const createBid=async (req,res)=>{
             })
         }
 
-        if(!await ItemModel.findOne({_id:data.itemId})){
+        if (!await ItemModel.findOne({ _id: data.itemId })) {
             return res.status(400).send({
                 status: false,
                 msg: "itemId is not present"
             })
         }
-        
+
         if (!isValid(data.price)) {
             return res.status(400).send({
                 status: false,
@@ -91,18 +91,18 @@ const createBid=async (req,res)=>{
             })
         }
 
-        if(!await UserModel.findOne({_id:data.userId})){
+        if (!await UserModel.findOne({ _id: data.userId })) {
             return res.status(400).send({
                 status: false,
                 msg: "userId is not present"
             })
         }
 
-    const saveddata=await BidModel.create(data)
-    res.status(201).send({status:true,msg:saveddata})
-    }catch(err){
-        res.status(500).send({status:false,msg:err.message})
+        const saveddata = await BidModel.create(data)
+        res.status(201).send({ status: true, msg: saveddata })
+    } catch (err) {
+        res.status(500).send({ status: false, msg: err.message })
     }
 }
 
-module.exports.createBid=createBid
+module.exports.createBid = createBid

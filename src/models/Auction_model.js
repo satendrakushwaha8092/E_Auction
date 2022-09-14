@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
 const auctionSchema = new mongoose.Schema({
-// Name
-// userId
-// Items Array (Each item has own status : pending, active, sold)
-// Auction Status  (Independent from status in items array)
-// Start Time
-// End Time
+    // Name
+    // userId
+    // Items Array (Each item has own status : pending, active, sold)
+    // Auction Status  (Independent from status in items array)
+    // Start Time
+    // End Time
 
     Name: {
         type: String,

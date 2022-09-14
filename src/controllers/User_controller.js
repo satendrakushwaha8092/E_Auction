@@ -456,5 +456,5 @@ const userUpdate = async function (req, res) {
 
 module.exports.createUser = createUser
 module.exports.loginUser = loginUser,
-module.exports.getUser = getUser,
-module.exports.userUpdate = userUpdate
+    module.exports.getUser = getUser,
+    module.exports.userUpdate = userUpdate
