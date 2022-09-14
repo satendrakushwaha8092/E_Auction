@@ -1,10 +1,14 @@
 const express = require("express")
 const router = express.Router()
-const education_controller=require('./controllers/course_Controller')
+const auction_controller=require('./controllers/Auction_controller')
+const user_controller=require('./controllers/User_controller')
 
-router.post('/create',education_controller.createCourse);  //create new courses
-router.get('/availablecourses',education_controller.getCourse);  //get all courses
-router.get('/getcourse/:id',education_controller.getCourseById);  //get course by id
-router.post('/update/:id',education_controller.updateCourse);  //update course using id
+router.post('/create',auction_controller.createAuction);
+
+router.post('/createuser',user_controller.createUser);
+
+router.post('/createuser',user_controller.loginUser);
+
+
 
 module.exports = router;
